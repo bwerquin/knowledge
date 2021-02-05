@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: knowledge
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  tls:
+    - hosts:
+        - knowledge.dev.insee.io
+  rules:
+    - host: knowledge.dev.insee.io
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: knowledge
+              servicePort: http
