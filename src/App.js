@@ -5,15 +5,19 @@ import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import SecondaryTitle from './SecondaryTitle';
 import Footer from './Footer';
-
+import knowledgeLogo from './img/knowledge.svg';
 
 function App() {
   return (
     <Container maxWidth="sm">
     <Box my={4}>
+    <div>
+    
       <Typography variant="h2" align="center" component="h1" gutterBottom>
+      <img src={knowledgeLogo} alt="knowledge logo" />
         Knowledge
       </Typography>
+      </div>
       <SecondaryTitle />
       <Footer><Copyright /></Footer>
     </Box>
