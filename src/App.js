@@ -7,6 +7,7 @@ import SecondaryTitle from './SecondaryTitle';
 import Footer from './Footer';
 import knowledgeLogo from './img/knowledge.svg';
 
+
 function App() {
   return (
     <Container maxWidth="sm">
