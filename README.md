@@ -1,2 +1,3 @@
-# knowledge
-Learn with simple quizz
+# Knowledge
+
+Explore features
