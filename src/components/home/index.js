@@ -1,9 +1,20 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography";
-import Fade from "@material-ui/core/Fade";
 import { makeStyles } from "@material-ui/core/styles";
-import SvgIcon from "@material-ui/core/SvgIcon";
-import { Link } from "react-router-dom";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Paper from '@mui/material/Paper';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import WebIcon from '@mui/icons-material/Web';
+import FeaturedPlayListIcon from '@mui/icons-material/FeaturedPlayList';
+import TableChartIcon from '@mui/icons-material/TableChart';
+import PersonIcon from '@mui/icons-material/Person';
+import FlagIcon from '@mui/icons-material/Flag';
+import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
+import { Link as RouterLink} from "react-router-dom";
+
 
 const Home = ({}) => (
   <>
@@ -16,10 +27,11 @@ function SecondaryTitle() {
   const classes = useStyles();
   return (
     <>
+     <Paper elevation={0}>
       <Typography className={classes.root} color="textSecondary" align="center">
-        <KnowledgeIcon className={classes.lightBulb} />
         Parcourir l'offre de service du SI Collecte
       </Typography>
+      </Paper>
     </>
   );
 }
@@ -36,22 +48,49 @@ const useStyles = makeStyles((theme) => ({
 
 function Start() {
   return (
-    <Fade in={true} timeout={7000}>
+    
       <Typography variant="h4" align="center" component="h4" gutterBottom>
-        <Link to="/explore" color="inherit">
-          Démarrer l'exploration
-        </Link>
+      <Paper elevation={0}>
+        <List aria-label="main mailbox folders">
+            <ListItemLink to="/tools" primary="par outils, l'ensemble des fonctionnalités couvertes par produits" icon={<WebIcon />} />
+            <ListItemLink to="/services" primary="par service, un regroupement des fonctionnalités par macro services, de la conception d'enquête à l'exploitation des données" icon={<FeaturedPlayListIcon />} />
+            <ListItemLink to="/gsbpm" primary="par phase du gsbpm, de l'étape concevoir à l'étape traitements" icon={<TableChartIcon />} />
+            <ListItemLink to="/milestones" primary="par jalon, l'ensemble des fonctionnalités déjà disponibles et celles à venir" icon={<FlagIcon />} />
+            <ListItemLink to="/users" primary="par acteur, l'ensemble des fonctionnalités proposées aux utilisateurs" icon={<PersonIcon />} />
+            <ListItemLink to="/select" primary="par selection, une vue filtrée où l’on peut sélectionner un certain nombre de services/fonctionnalités/jalon... pour une vision spécifique" icon={<DynamicFeedIcon />} />
+          </List>
+      </Paper>
       </Typography>
-    </Fade>
+
   );
 }
 
-function KnowledgeIcon(props) {
+function ListItemLink(props) {
+  const { icon, primary, to } = props;
+
+  const renderLink = React.useMemo(
+    () =>
+      React.forwardRef(function Link(itemProps, ref) {
+        return <RouterLink to={to} ref={ref} {...itemProps} role={undefined} />;
+      }),
+    [to],
+  );
+
   return (
-    <SvgIcon {...props}>
-      <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z" />
-    </SvgIcon>
+    <li>
+      <ListItem button component={renderLink}>
+        {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+        <ListItemText primary={primary} />
+      </ListItem>
+    </li>
   );
 }
+
+ListItemLink.propTypes = {
+  icon: PropTypes.element,
+  primary: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+};
+
 
 export default Home;

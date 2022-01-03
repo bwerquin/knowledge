@@ -7,14 +7,30 @@ import Link from "@material-ui/core/Link";
 import Footer from "./Footer";
 import knowledgeLogo from "./img/knowledge.svg";
 import Home from "./components/home";
-import Explore from "./components/explore";
+import Users from "./components/users";
+import Milestones from "./components/milestones";
+import Select from "./components/select";
+import Services from "./components/services";
+import Tools from "./components/tools";
+import Gsbpm from "./components/gsbpm";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  Link: {
+    color: '#000000',
+    '&:hover': {
+      color: '#000000',
+  },
+}})
 
 function Root() {
+  const classes = useStyles()
   return (
     <Router>
       <div>
         <Container maxWidth="sm">
           <Box my={4}>
+            <Link href="/" underline="none" className={classes.Link} >
             <div>
               <Typography
                 variant="h2"
@@ -26,10 +42,15 @@ function Root() {
                 Knowledge
               </Typography>
             </div>
-
+            </Link>
             <Switch>
-              <Route path="/explore" component={Explore} />
-              <Route path="/" component={Home} />
+              <Route exact path="/services" component={Services} />
+              <Route exact path="/select" component={Select} />
+              <Route exact path="/tools" component={Tools} />
+              <Route exact path="/milestones" component={Milestones} />
+              <Route exact path="/users" component={Users} />
+              <Route exact path="/gsbpm" component={Gsbpm} />
+              <Route exact path="/" component={Home} />
             </Switch>
 
             <Footer>
@@ -45,9 +66,9 @@ function Root() {
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Offre de service du SI Collecte - "}
-      <Link color="inherit" href="https://github.com/bwerquin/Knwodledge-Data">
-        Knwodledge
+      {"Offre de service du SI Collecte - Insee - "}
+      <Link color="inherit" href="https://github.com/bwerquin/Knowledge-Data">
+        Knowledge
       </Link>
       {"."}
     </Typography>
