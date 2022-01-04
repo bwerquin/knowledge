@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: knowledge
-          image: bwerquin/knowledge:latest
+          image: bwerquin/knowledge:0.1.1
