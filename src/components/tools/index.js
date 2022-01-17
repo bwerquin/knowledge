@@ -1,11 +1,13 @@
 import React from 'react';
 import Menu from '../menu';
 
-const Tools = ({  }) => (
-  <>
+function Tools() {
+  return (
+    <>
     <Menu />
     <div>Tools</div>
   </>
-);
+  )
+}
 
 export default Tools;

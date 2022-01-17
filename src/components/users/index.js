@@ -1,11 +1,13 @@
 import React from 'react';
 import Menu from '../menu';
 
-const Users = ({}) => (
-  <>
+function Users() {
+  return (
+    <>
     <Menu />
     <div>Users</div>
   </>
-);
+  )
+}
 
 export default Users;

@@ -16,12 +16,14 @@ import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
 import { Link as RouterLink} from "react-router-dom";
 
 
-const Home = ({}) => (
-  <>
+function Home() {
+  return (
+    <>
     <SecondaryTitle />
     <Start />
   </>
-);
+  )
+}
 
 function SecondaryTitle() {
   const classes = useStyles();
