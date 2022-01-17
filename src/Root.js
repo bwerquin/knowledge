@@ -66,7 +66,7 @@ function Root() {
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Offre de service du SI Collecte - Insee - "}
+      {"Insee - "}
       <Link color="inherit" href="https://github.com/bwerquin/Knowledge-Data">
         Knowledge
       </Link>
